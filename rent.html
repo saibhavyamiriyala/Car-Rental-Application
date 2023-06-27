@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rent Car</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Rent Car</h1>
+    <form method="POST" action="{{ url_for('rent_car') }}">
+        <label for="car_name">Car Name:</label>
+        <input type="text" id="car_name" name="car_name" required>
+
+        <label for="car_model">Car Model:</label>
+        <input type="text" id="car_model" name="car_model" required>
+
+        <label for="car_color">Car Color:</label>
+        <input type="text" id="car_color" name="car_color" required>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <h2>Available Cars:</h2>
+    <table>
+        <tr>
+            <th>Car Name</th>
+            <th>Car Model</th>
+            <th>Car Color</th>
+        </tr>
+        {% for car in cars %}
+        <tr>
+            <td>{{ car.name }}</td>
+            <td>{{ car.model }}</td>
+            <td>{{ car.color }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

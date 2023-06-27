@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Available Cars</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Available Cars</h1>
+    <ul>
+    {% for car in cars %}
+        <li>
+            <h3>{{ car[1] }}</h3>
+            <p>Brand: {{ car[2] }}</p>
+            <p>Model: {{ car[3] }}</p>
+            <p>Price: ${{ car[4] }}/day</p>
+            <a href="{{ url_for('rent_car', car_id=car[0]) }}">Rent</a>
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
